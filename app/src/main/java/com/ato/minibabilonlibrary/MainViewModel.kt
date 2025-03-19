@@ -1,32 +1,38 @@
 package com.ato.minibabilonlibrary
 
 import androidx.lifecycle.ViewModel
+import com.ato.minibabilonlibrary.mvi.Store
+import com.ato.minibabilonlibrary.mvi.user_actions.ToggleVisibility
+import com.ato.minibabilonlibrary.mvi.user_actions.UpdateAlphabet
+import com.ato.minibabilonlibrary.mvi.user_actions.UpdateLineCount
+import com.ato.minibabilonlibrary.mvi.user_actions.UpdatePageCount
+import com.ato.minibabilonlibrary.mvi.user_actions.UpdateSymbols
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    val store: Store = Store()
+) : ViewModel() {
 
-    private val _state = MutableStateFlow(MainState("kek"))
-    val state: StateFlow<MainState> get() = _state
+    val state: StateFlow<MainState> get() = store._state
 
     fun updateAlphabet(newAlphabet: String) {
-        _state.value = _state.value.copy(alphabet = newAlphabet)
+        store.dispatch(UpdateAlphabet(newAlphabet))
     }
 
     fun updatePage(newPage: String) {
-        _state.value = _state.value.copy(page = newPage)
+        store.dispatch(UpdatePageCount(newPage))
     }
 
     fun updateLine(newLine: String) {
-        _state.value = _state.value.copy(line = newLine)
+        store.dispatch(UpdateLineCount(newLine))
     }
 
     fun updateSymbols(newSymbols: String) {
-        _state.value = _state.value.copy(symbols = newSymbols)
+        store.dispatch(UpdateSymbols(newSymbols))
     }
 
-
     fun toggleVisibility() {
-        _state.value = _state.value.copy(isSettingsVisible = !_state.value.isSettingsVisible)
+        store.dispatch(ToggleVisibility)
     }
 }
