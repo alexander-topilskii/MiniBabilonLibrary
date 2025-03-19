@@ -9,10 +9,6 @@ class MainViewModel : ViewModel() {
     private val _state = MutableStateFlow(MainState("kek"))
     val state: StateFlow<MainState> get() = _state
 
-    fun updateText(newText: String) {
-        _state.value = MainState(newText)
-    }
-
     fun updateAlphabet(newAlphabet: String) {
         _state.value = _state.value.copy(alphabet = newAlphabet)
     }

@@ -68,7 +68,7 @@ fun BabilonLibrary(
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
-        Text(text = "Hello $name!")
+        Text(text = "This is a babilon library $name!")
 
         Spacer(modifier = Modifier.height(16.dp))
 
