@@ -1,4 +1,4 @@
-package com.ato.minibabilonlibrary.main_mvi
+package com.ato.minibabilonlibrary.main_mvi.elements
 
 import com.ato.mvicore.Effect
 

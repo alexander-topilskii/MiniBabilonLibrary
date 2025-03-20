@@ -20,7 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ato.minibabilonlibrary.MainState.Companion.DEFAULT_STATE
+import com.ato.minibabilonlibrary.main_mvi.ui.UiMainState.Companion.DEFAULT_STATE
 import com.ato.minibabilonlibrary.ui.componsents.ExpandableBlock
 import com.ato.minibabilonlibrary.ui.theme.MiniBabilonLibraryTheme
 
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
                         alphabet = state.alphabet,
                         page = state.page,
                         line = state.line,
-                        symbols = state.symbols,
+                        symbols = state.symbolsOnLine,
                         isSettingsVisible = state.isSettingsVisible,
                         viewModel = viewModel,
                         modifier = Modifier.padding(innerPadding)
@@ -140,9 +140,9 @@ fun GreetingPreview() {
             topText =  DEFAULT_STATE.topText,
             libraryInfo =  DEFAULT_STATE.libraryInfo,
             alphabet =  DEFAULT_STATE.alphabet,
-            page = "Android",
-            line = "Android",
-            symbols = "Android",
+            page = DEFAULT_STATE.page,
+            line = DEFAULT_STATE.line,
+            symbols = DEFAULT_STATE.symbolsOnLine,
             isSettingsVisible = true,
             viewModel = null,
             modifier = Modifier.padding(16.dp)

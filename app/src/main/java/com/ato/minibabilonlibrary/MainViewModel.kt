@@ -1,37 +1,42 @@
 package com.ato.minibabilonlibrary
 
 import androidx.lifecycle.ViewModel
-import com.ato.minibabilonlibrary.main_mvi.MainAction
-import com.ato.minibabilonlibrary.main_mvi.MainAction.ToggleVisibility
-import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateAlphabet
-import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateLineCount
-import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdatePageCount
-import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateSymbols
-import com.ato.minibabilonlibrary.main_mvi.MainEffect
+import com.ato.minibabilonlibrary.main_mvi.elements.MainAction
+import com.ato.minibabilonlibrary.main_mvi.elements.MainAction.InputActions.*
+
+import com.ato.minibabilonlibrary.main_mvi.elements.MainEffect
+import com.ato.minibabilonlibrary.main_mvi.elements.MainState
 import com.ato.minibabilonlibrary.main_mvi.MainStore
+import com.ato.minibabilonlibrary.main_mvi.ui.UiMainState
 import com.ato.mvicore.Store
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel(
-    private val store: Store<MainState, MainAction, MainEffect> = MainStore()
-) : ViewModel() {
 
-    val state: StateFlow<MainState> get() = store.state
+) : ViewModel() {
+    private val store: Store<
+            MainState,
+            MainAction,
+            MainEffect,
+            UiMainState
+            > = MainStore()
+
+    val state: StateFlow<UiMainState> get() = store.uiState
 
     fun updateAlphabet(newAlphabet: String) {
         store.dispatch(UpdateAlphabet(newAlphabet))
     }
 
     fun updatePage(newPage: String) {
-        store.dispatch(UpdatePageCount(newPage))
+        store.dispatch(UpdatePageCount(newPage.toInt()))
     }
 
     fun updateLine(newLine: String) {
-        store.dispatch(UpdateLineCount(newLine))
+        store.dispatch(UpdateLineCount(newLine.toInt()))
     }
 
     fun updateSymbols(newSymbols: String) {
-        store.dispatch(UpdateSymbols(newSymbols))
+        store.dispatch(UpdateSymbols(newSymbols.toInt()))
     }
 
     fun toggleVisibility() {
