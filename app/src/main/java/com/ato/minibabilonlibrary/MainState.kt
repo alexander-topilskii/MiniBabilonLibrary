@@ -4,13 +4,29 @@ import com.ato.mvicore.State
 
 
 data class MainState(
-    val text: String,
-    val alphabet: String = "0123456789",
-    val page: String = "2",
-    val line: String = "10",
-    val symbols: String = "20",
-    val isSettingsVisible: Boolean = false
-): State
+    val topText: String = DEFAULT_STATE.topText,
+    val libraryInfo: String = DEFAULT_STATE.libraryInfo,
+    val alphabet: String = DEFAULT_STATE.alphabet,
+    val page: String = DEFAULT_STATE.page,
+    val line: String = DEFAULT_STATE.line,
+    val symbols: String = DEFAULT_STATE.symbols,
+    val isSettingsVisible: Boolean = DEFAULT_STATE.isSettingsVisible
+) : State {
+
+    companion object {
+        val DEFAULT_STATE = MainState(
+            topText = "Bibel Library",
+            libraryInfo = "Book contains 2 pages\n" +
+                    "10 lines on each page\n" +
+                    "20 symbols in each line",
+            alphabet = "0123456789",
+            page = "2",
+            line = "10",
+            symbols = "20",
+            isSettingsVisible = false
+        )
+    }
+}
 
 
 //алфавит 10 символов (0123456789) без знаков препинания и пробелов

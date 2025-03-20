@@ -20,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ato.minibabilonlibrary.MainState.Companion.DEFAULT_STATE
 import com.ato.minibabilonlibrary.ui.componsents.ExpandableBlock
 import com.ato.minibabilonlibrary.ui.theme.MiniBabilonLibraryTheme
 
@@ -37,7 +38,8 @@ class MainActivity : ComponentActivity() {
                     val state by viewModel.state.collectAsState()
 
                     BabilonLibrary(
-                        name = state.text,
+                        topText = state.topText,
+                        libraryInfo = state.libraryInfo,
                         alphabet = state.alphabet,
                         page = state.page,
                         line = state.line,
@@ -54,11 +56,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BabilonLibrary(
-    name: String,
+    topText: String,
     alphabet: String,
     page: String,
     line: String,
     symbols: String,
+    libraryInfo: String,
     isSettingsVisible: Boolean,
     viewModel: MainViewModel?,
     modifier: Modifier = Modifier
@@ -68,17 +71,18 @@ fun BabilonLibrary(
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
-        Text(text = "This is a babilon library $name!")
+        Text(text = topText)
 
         Spacer(modifier = Modifier.height(16.dp))
 
         ExpandableBlock(
             isVisible = isSettingsVisible,
             onToggle = { viewModel?.toggleVisibility() },
-            content = {
-                Settings(alphabet, viewModel, page, line, symbols)
-            }
+            content = { Settings(alphabet, viewModel, page, line, symbols) }
         )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(text = libraryInfo)
     }
 }
 
@@ -133,8 +137,9 @@ private fun Settings(
 fun GreetingPreview() {
     MiniBabilonLibraryTheme {
         BabilonLibrary(
-            name = "Android",
-            alphabet = "Android",
+            topText =  DEFAULT_STATE.topText,
+            libraryInfo =  DEFAULT_STATE.libraryInfo,
+            alphabet =  DEFAULT_STATE.alphabet,
             page = "Android",
             line = "Android",
             symbols = "Android",
