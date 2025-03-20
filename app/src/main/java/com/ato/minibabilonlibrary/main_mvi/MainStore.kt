@@ -1,11 +1,13 @@
 package com.ato.minibabilonlibrary.main_mvi
 
 import com.ato.minibabilonlibrary.MainState
-import com.ato.minibabilonlibrary.main_mvi.MainAction.*
-import com.ato.minibabilonlibrary.mvi.Action
+import com.ato.minibabilonlibrary.main_mvi.MainAction.ToggleVisibility
+import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateAlphabet
+import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateLineCount
+import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdatePageCount
+import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateSymbols
 import com.ato.minibabilonlibrary.mvi.Publisher
 import com.ato.minibabilonlibrary.mvi.Reducer
-import com.ato.minibabilonlibrary.mvi.State
 import com.ato.minibabilonlibrary.mvi.Store
 
 class MainStore : Store<MainState, MainAction, MainEffect>(
