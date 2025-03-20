@@ -1,5 +1,7 @@
 package com.ato.minibabilonlibrary
 
+import com.ato.minibabilonlibrary.mvi.State
+
 data class MainState(
     val text: String,
     val alphabet: String = "0123456789",
@@ -7,7 +9,7 @@ data class MainState(
     val line: String = "10",
     val symbols: String = "20",
     val isSettingsVisible: Boolean = false
-)
+): State
 
 
 //алфавит 10 символов (0123456789) без знаков препинания и пробелов
