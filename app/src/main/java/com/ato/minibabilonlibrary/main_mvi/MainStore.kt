@@ -6,9 +6,10 @@ import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateAlphabet
 import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateLineCount
 import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdatePageCount
 import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateSymbols
-import com.ato.minibabilonlibrary.mvi.Publisher
-import com.ato.minibabilonlibrary.mvi.Reducer
-import com.ato.minibabilonlibrary.mvi.Store
+import com.ato.mvicore.Publisher
+import com.ato.mvicore.Reducer
+import com.ato.mvicore.Store
+
 
 class MainStore : Store<MainState, MainAction, MainEffect>(
     initialState = MainState(

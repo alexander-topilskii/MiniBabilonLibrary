@@ -1,8 +1,6 @@
 package com.ato.minibabilonlibrary.main_mvi
 
-import com.ato.minibabilonlibrary.mvi.Action
-import com.ato.minibabilonlibrary.mvi.Effect
-
+import com.ato.mvicore.Action
 
 sealed interface MainAction: Action {
 
@@ -15,13 +13,4 @@ sealed interface MainAction: Action {
     data class UpdateSymbols(val newSymbolCount:String): MainAction
 
     data object ToggleVisibility: MainAction
-}
-
-
-/***
- *
- */
-sealed interface MainEffect: Effect {
-
-    data class ShowToast(val message: String): MainEffect
 }

@@ -9,7 +9,7 @@ import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdatePageCount
 import com.ato.minibabilonlibrary.main_mvi.MainAction.UpdateSymbols
 import com.ato.minibabilonlibrary.main_mvi.MainEffect
 import com.ato.minibabilonlibrary.main_mvi.MainStore
-import com.ato.minibabilonlibrary.mvi.Store
+import com.ato.mvicore.Store
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel(

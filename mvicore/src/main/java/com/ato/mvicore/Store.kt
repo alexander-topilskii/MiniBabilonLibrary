@@ -1,4 +1,4 @@
-package com.ato.minibabilonlibrary.mvi
+package com.ato.mvicore
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,17 +15,14 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 
-// Reducer: изменяет состояние и может генерировать эффект
 fun interface Reducer<S : State, A : Action> {
     fun reduce(state: S, action: A): S
 }
 
-// Middleware: может обрабатывать Action и отправлять новые Action
 fun interface Middleware<S : State, A : Action> {
     fun process(state: S, action: A, dispatch: (A) -> Unit)
 }
 
-// Publisher: позволяет отправлять эффекты в Store из внешнего кода
 interface Publisher<S : State, A : Action, E : Effect> {
     fun publish(state : S, action : A): E?
 }

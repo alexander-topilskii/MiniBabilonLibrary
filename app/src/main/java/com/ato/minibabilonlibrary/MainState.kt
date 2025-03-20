@@ -1,6 +1,7 @@
 package com.ato.minibabilonlibrary
 
-import com.ato.minibabilonlibrary.mvi.State
+import com.ato.mvicore.State
+
 
 data class MainState(
     val text: String,

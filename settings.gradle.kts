@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MiniBabilonLibrary"
 include(":app")
- 
+include(":mvicore")

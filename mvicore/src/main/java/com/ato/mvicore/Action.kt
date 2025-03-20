@@ -1,4 +1,4 @@
-package com.ato.minibabilonlibrary.mvi
+package com.ato.mvicore
 
 interface Action
 interface State
