@@ -1,7 +1,22 @@
 package com.ato.minibabilonlibrary.main_mvi.ui
 
+
 data class UiMainState(
     val topText: String,
+    val settingsStateUi: SettingsStateUi
+) {
+
+    companion object {
+        val DEFAULT_STATE = UiMainState(
+            topText = "Bibel Library",
+            settingsStateUi = SettingsStateUi.DEFAULT_STATE
+        )
+    }
+}
+
+
+data class SettingsStateUi(
+    val settingsTitle: String,
     val alphabet: String,
     val libraryInfo: String,
     val page: String,
@@ -9,10 +24,9 @@ data class UiMainState(
     val symbolsOnLine: String,
     val isSettingsVisible: Boolean
 ) {
-
     companion object {
-        val DEFAULT_STATE = UiMainState(
-            topText = "Bibel Library",
+        val DEFAULT_STATE = SettingsStateUi(
+            settingsTitle = "Settings",
             alphabet = "0123456789",
             page = "2",
             line = "10",

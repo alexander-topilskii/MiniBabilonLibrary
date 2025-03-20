@@ -12,26 +12,51 @@ class LibrarySettingsMiddleware(
 ) : Middleware<MainState, MainAction> {
 
     override fun process(state: MainState, action: MainAction, dispatch: (MainAction) -> Unit) {
-        when (action) {
-            is UpdateAlphabet,
-            is UpdateLineCount,
-            is UpdateSymbols,
-            is UpdatePageCount -> {
-                val newBooksCount = paramsCalculator
+        val newBooksCount = when (action) {
+            is UpdateAlphabet -> {
+                paramsCalculator
                     .calculateBookCount(
-                        alphabet = state.alphabet,
+                        alphabet = action.newAlphabet,
                         line = state.linesOnPage.toString(),
                         symbolsOnLine = state.symbolsOnLine.toString(),
                         page = state.pageCount.toString()
                     )
-
-                dispatch(ChangeBooksCount(newBooksCount))
             }
 
-            else -> Unit
+            is UpdateLineCount -> {
+                paramsCalculator
+                    .calculateBookCount(
+                        alphabet = state.alphabet,
+                        line = action.newLineCount.toString(),
+                        symbolsOnLine = state.symbolsOnLine.toString(),
+                        page = state.pageCount.toString()
+                    )
+            }
+
+            is UpdateSymbols -> {
+                paramsCalculator
+                    .calculateBookCount(
+                        alphabet = state.alphabet,
+                        line = state.linesOnPage.toString(),
+                        symbolsOnLine = action.newSymbolCount.toString(),
+                        page = state.pageCount.toString()
+                    )
+            }
+
+            is UpdatePageCount -> {
+                paramsCalculator
+                    .calculateBookCount(
+                        alphabet = state.alphabet,
+                        line = state.linesOnPage.toString(),
+                        symbolsOnLine = state.symbolsOnLine.toString(),
+                        page = action.newPageCount.toString()
+                    )
+            }
+
+            else -> return
         }
+
+        dispatch(ChangeBooksCount(newBooksCount))
+
     }
-
-
 }
-

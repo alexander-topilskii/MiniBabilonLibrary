@@ -9,7 +9,7 @@ object LibraryParamsCalculator {
         symbolsOnLine: String,
         page: String
     ): BigInteger {
-        println("ALEX: ${Thread.currentThread().name}")
+        println("ALEX: $alphabet, $line, $symbolsOnLine, $page")
 
         val alphabetSize = alphabet.length
         val pageSize = page.toInt()

@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ExpandableBlock(
+    title: String,
     isVisible: Boolean,
     onToggle: () -> Unit,
     content: @Composable () -> Unit
@@ -61,7 +62,7 @@ fun ExpandableBlock(
                     enter = fadeIn(),
                     exit = fadeOut(),
                 ) {
-                    Text("Library settings")
+                    Text(title)
                 }
             }
 
