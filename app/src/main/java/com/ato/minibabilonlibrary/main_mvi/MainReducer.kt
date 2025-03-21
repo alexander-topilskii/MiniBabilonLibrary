@@ -32,7 +32,7 @@ class MainReducer : Reducer<MainState, MainAction> {
             }
 
             is LogicActions.ChangeBooksCount -> {
-                return state.copy(booksCountInLibrary = action.count)
+                return state.copy(baseBooksCountInLibrary = action.base, powBooksCountInLibrary = action.pow)
             }
 
             else -> return state

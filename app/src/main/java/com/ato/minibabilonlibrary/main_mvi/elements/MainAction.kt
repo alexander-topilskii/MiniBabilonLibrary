@@ -18,7 +18,7 @@ sealed interface MainAction : Action {
     }
 
     sealed interface LogicActions : MainAction {
-        data class ChangeBooksCount(val count: BigInteger) : LogicActions
+        data class ChangeBooksCount(val base: Int, val pow: Int) : LogicActions
     }
 
 }

@@ -1,15 +1,12 @@
 package com.ato.minibabilonlibrary.main_mvi.logic
 
-import java.math.BigInteger
-
 object LibraryParamsCalculator {
     fun calculateBookCount(
         alphabet: String,
         line: String,
         symbolsOnLine: String,
         page: String
-    ): BigInteger {
-        println("ALEX: $alphabet, $line, $symbolsOnLine, $page")
+    ): Pair<Int, Int> {
 
         val alphabetSize = alphabet.length
         val pageSize = page.toInt()
@@ -24,9 +21,9 @@ object LibraryParamsCalculator {
         )
     }
 
-   private fun countBooks(alphabet: Int, page: Int, line: Int, symbols: Int): BigInteger {
+   private fun countBooks(alphabet: Int, page: Int, line: Int, symbols: Int): Pair<Int, Int> {
         val bookSize = page * line * symbols
 
-        return BigInteger.valueOf(alphabet.toLong()).pow(bookSize)
+        return alphabet to bookSize
     }
 }

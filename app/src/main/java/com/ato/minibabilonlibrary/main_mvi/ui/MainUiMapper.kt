@@ -15,10 +15,11 @@ object MainUiMapper {
                 libraryInfo = "Book contains ${state.pageCount} pages\n" +
                         "${state.linesOnPage} lines on each page\n" +
                         "${state.symbolsOnLine} symbols in each line.\n" +
-                        "Total books count: ${state.booksCountInLibrary}"
+                        "Total books count: ",
+                booksCountBase = state.baseBooksCountInLibrary.toString(),
+                booksCountPow = state.powBooksCountInLibrary.toString()
             ),
             topText = "Bibel Library"
         )
     }
-
 }

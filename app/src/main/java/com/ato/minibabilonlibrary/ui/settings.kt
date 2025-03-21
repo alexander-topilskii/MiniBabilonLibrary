@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ato.minibabilonlibrary.MainViewModel
 import com.ato.minibabilonlibrary.main_mvi.ui.SettingsStateUi
+import com.ato.minibabilonlibrary.ui.componsents.PowerText
 
 
 @Composable
@@ -27,7 +28,6 @@ fun Settings(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
         OutlinedTextField(
             value = settings.page,
             onValueChange = { viewModel?.updatePage(it) },
@@ -36,7 +36,6 @@ fun Settings(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
         OutlinedTextField(
             value = settings.line,
             onValueChange = { viewModel?.updateLine(it) },
@@ -44,7 +43,6 @@ fun Settings(
         )
 
         Spacer(modifier = Modifier.height(16.dp))
-
 
         OutlinedTextField(
             value = settings.symbolsOnLine,
@@ -55,6 +53,7 @@ fun Settings(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(text = settings.libraryInfo)
+        PowerText(settings.booksCountBase, settings.booksCountPow.toString())
     }
 }
 

@@ -12,7 +12,7 @@ class LibrarySettingsMiddleware(
 ) : Middleware<MainState, MainAction> {
 
     override fun process(state: MainState, action: MainAction, dispatch: (MainAction) -> Unit) {
-        val newBooksCount = when (action) {
+        val (base, pow) = when (action) {
             is UpdateAlphabet -> {
                 paramsCalculator
                     .calculateBookCount(
@@ -56,7 +56,6 @@ class LibrarySettingsMiddleware(
             else -> return
         }
 
-        dispatch(ChangeBooksCount(newBooksCount))
-
+        dispatch(ChangeBooksCount(base, pow))
     }
 }

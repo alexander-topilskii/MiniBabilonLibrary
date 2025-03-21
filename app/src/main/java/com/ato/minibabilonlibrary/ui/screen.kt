@@ -33,7 +33,7 @@ fun BabylonLibrary(
     ) {
         Text(text = topText)
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         ExpandableBlock(
             title = settingsStateUi.settingsTitle,
@@ -47,6 +47,15 @@ fun BabylonLibrary(
             }
         )
         Spacer(modifier = Modifier.height(16.dp))
+
+        ExpandableBlock(
+            title = settingsStateUi.settingsTitle,
+            isVisible = settingsStateUi.isSettingsVisible,
+            onToggle = { viewModel?.toggleVisibility() },
+            content = {
+
+            }
+        )
     }
 }
 

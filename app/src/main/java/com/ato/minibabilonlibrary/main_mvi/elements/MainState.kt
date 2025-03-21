@@ -9,7 +9,8 @@ data class MainState(
     val pageCount: Int = DEFAULT_STATE.pageCount,
     val linesOnPage: Int = DEFAULT_STATE.linesOnPage,
     val symbolsOnLine: Int = DEFAULT_STATE.symbolsOnLine,
-    val booksCountInLibrary: BigInteger = DEFAULT_STATE.booksCountInLibrary,
+    val baseBooksCountInLibrary: Int = DEFAULT_STATE.baseBooksCountInLibrary,
+    val powBooksCountInLibrary: Int = DEFAULT_STATE.powBooksCountInLibrary,
     val isSettingsVisible: Boolean = DEFAULT_STATE.isSettingsVisible
 ) : State {
 
@@ -20,7 +21,8 @@ data class MainState(
             linesOnPage = 10,
             symbolsOnLine = 20,
             isSettingsVisible = false,
-            booksCountInLibrary = BigInteger.valueOf(100)
+            baseBooksCountInLibrary = 10,
+            powBooksCountInLibrary = 400
         )
     }
 }

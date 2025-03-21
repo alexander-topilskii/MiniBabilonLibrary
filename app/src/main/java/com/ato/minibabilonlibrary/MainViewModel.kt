@@ -12,14 +12,13 @@ import com.ato.mvicore.Store
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel(
-
-) : ViewModel() {
     private val store: Store<
             MainState,
             MainAction,
             MainEffect,
             UiMainState
             > = MainStore()
+) : ViewModel() {
 
     val state: StateFlow<UiMainState> get() = store.uiState
 
@@ -28,18 +27,23 @@ class MainViewModel(
     }
 
     fun updatePage(newPage: String) {
-        store.dispatch(UpdatePageCount(newPage.toInt()))
+        store.dispatch(UpdatePageCount(newPage.toIntOrDefault()))
     }
 
     fun updateLine(newLine: String) {
-        store.dispatch(UpdateLineCount(newLine.toInt()))
+        store.dispatch(UpdateLineCount(newLine.toIntOrDefault()))
     }
 
     fun updateSymbols(newSymbols: String) {
-        store.dispatch(UpdateSymbols(newSymbols.toInt()))
+        store.dispatch(UpdateSymbols(newSymbols.toIntOrDefault()))
     }
 
     fun toggleVisibility() {
         store.dispatch(ToggleVisibility)
     }
+}
+
+
+fun String?.toIntOrDefault(default: Int = 0): Int {
+    return this?.toIntOrNull()?:default
 }
