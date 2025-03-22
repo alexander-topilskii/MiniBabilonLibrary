@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/mvicore" />
+            <option value="$PROJECT_DIR$/sequences" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
