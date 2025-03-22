@@ -1,4 +1,4 @@
-package com.ato.sequences
+package com.ato.sequences.graph
 
 import android.text.Layout
 import androidx.compose.material3.MaterialTheme

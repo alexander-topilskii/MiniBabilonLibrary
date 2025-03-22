@@ -1,4 +1,4 @@
-package com.ato.sequences
+package com.ato.sequences.graph
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
