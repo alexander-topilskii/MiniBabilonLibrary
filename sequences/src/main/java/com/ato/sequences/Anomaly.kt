@@ -50,11 +50,11 @@ private val RangeProvider =
             -getMinY(minY, maxY, extraStore)
     }
 
-private val YDecimalFormat = DecimalFormat("#.## °C;−#.## °C")
+private val YDecimalFormat = DecimalFormat("#.##;−#.##")
 
 private val StartAxisValueFormatter = CartesianValueFormatter.decimal(YDecimalFormat)
 
-private val MarkerValueFormatter = DefaultCartesianMarker.ValueFormatter.default(YDecimalFormat)
+internal val MarkerValueFormatter = DefaultCartesianMarker.ValueFormatter.default(YDecimalFormat)
 
 private fun getColumnProvider(positive: LineComponent, negative: LineComponent) =
     object : ColumnCartesianLayer.ColumnProvider {
@@ -105,9 +105,9 @@ private fun JetpackComposeTemperatureAnomalies(
     )
 }
 
-private val x = (1940..2024).toList()
+internal val x: List<Int> = (1940..2024).toList()
 
-private val y =
+internal val y: List<Double> =
     listOf(
         -0.6681757,
         -0.49279118,

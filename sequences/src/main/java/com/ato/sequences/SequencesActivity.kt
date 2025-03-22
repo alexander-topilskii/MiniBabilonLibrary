@@ -37,8 +37,7 @@ class SequencesActivity : ComponentActivity() {
         setContent {
             MiniBabilonLibraryTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    Sequences(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -48,10 +47,12 @@ class SequencesActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Sequences( modifier: Modifier = Modifier) {
     Column(modifier = modifier.verticalScroll(rememberScrollState())) {
-        Bars()
-        Lines()
+        Lines(
+            x = listOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0),
+            y = listOf(0.0, 1.0, 4.0, 9.0, 16.0, 25.0, 36.0, 49.0, 64.0, 81.0)
+        )
     }
 }
 
@@ -77,19 +78,17 @@ private fun Bars() {
 }
 
 @Composable
-private fun ColumnScope.Lines() {
-    Text(
-        text = "Hello rememberLineCartesianLayer!",
-    )
+private fun ColumnScope.Lines(x: List<Double> ,y: List<Double>) {
     val lineProducer = remember { CartesianChartModelProducer() }
     LaunchedEffect(Unit) {
         lineProducer.runTransaction {
-            lineSeries { series(13, 8, 7, 12, 0, 1, 15, 14, 0, 11, 6, 12, 0, 11, 12, 11) }
+            lineSeries { series(x, y) }
         }
     }
     CartesianChartHost(
         rememberCartesianChart(
             rememberLineCartesianLayer(),
+            marker =  rememberMarker(MarkerValueFormatter),
             startAxis = VerticalAxis.rememberStart(),
             bottomAxis = HorizontalAxis.rememberBottom(),
         ),
@@ -101,6 +100,6 @@ private fun ColumnScope.Lines() {
 @Composable
 fun GreetingPreview() {
     MiniBabilonLibraryTheme {
-        Greeting("Android")
+        Sequences()
     }
 }
