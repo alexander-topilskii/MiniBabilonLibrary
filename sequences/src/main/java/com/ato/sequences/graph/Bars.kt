@@ -7,14 +7,18 @@ import androidx.compose.runtime.remember
 import com.patrykandpatrick.vico.compose.cartesian.CartesianChartHost
 import com.patrykandpatrick.vico.compose.cartesian.axis.rememberBottom
 import com.patrykandpatrick.vico.compose.cartesian.axis.rememberStart
+import com.patrykandpatrick.vico.compose.cartesian.layer.grouped
 import com.patrykandpatrick.vico.compose.cartesian.layer.rememberColumnCartesianLayer
 import com.patrykandpatrick.vico.compose.cartesian.layer.rememberLineCartesianLayer
+import com.patrykandpatrick.vico.compose.cartesian.layer.stacked
 import com.patrykandpatrick.vico.compose.cartesian.rememberCartesianChart
 import com.patrykandpatrick.vico.core.cartesian.axis.HorizontalAxis
 import com.patrykandpatrick.vico.core.cartesian.axis.VerticalAxis
 import com.patrykandpatrick.vico.core.cartesian.data.CartesianChartModelProducer
 import com.patrykandpatrick.vico.core.cartesian.data.columnSeries
 import com.patrykandpatrick.vico.core.cartesian.data.lineSeries
+import com.patrykandpatrick.vico.core.cartesian.layer.ColumnCartesianLayer
+import com.patrykandpatrick.vico.core.cartesian.layer.ColumnCartesianLayer.MergeMode
 
 
 @Composable
@@ -25,17 +29,17 @@ fun Bars(y: Collection<Number>, x: Collection<Number> = y.indices.toList()) {
             columnSeries { series(x, y) }
         }
     }
-    Text(
-        text = "rememberColumnCartesianLayer!",
-    )
     CartesianChartHost(
-        rememberCartesianChart(
-            rememberColumnCartesianLayer(),
+        chart = rememberCartesianChart(
+            rememberColumnCartesianLayer(
+                mergeMode = { MergeMode.stacked() }
+            ),
+
             marker = rememberMarker(MarkerValueFormatter),
             startAxis = VerticalAxis.rememberStart(),
             bottomAxis = HorizontalAxis.rememberBottom(),
         ),
-        columnProducer,
+        modelProducer = columnProducer,
     )
 }
 

@@ -49,7 +49,9 @@ fun getNormalSequence(n: Int = 30): List<Double> {
 }
 
 fun getReversSequence(n: Int = 30): List<Double> {
-    return (0..n).map { 1 / it.toDouble() }
+    return (0..n).map {
+        if (it == 0) 0.0 else 1 / it.toDouble()
+    }
 }
 
 @Preview(showBackground = true)
